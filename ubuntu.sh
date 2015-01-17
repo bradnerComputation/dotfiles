@@ -1,8 +1,8 @@
 #!/bin/bash
 
 GREEN='\033[0;32m'
-COLOROFF='\033[0m'
-echo -e "${GREEN}hello, world${NOCOLOR}"
+NOCOLOR='\033[0m'
+echo -e "${GREEN}Prepping a new machine!${NOCOLOR}"
 
 if [[ $UID != 0 ]]; then
     echo "Please run this script with sudo:"
@@ -13,10 +13,11 @@ fi
 # Where am I?
 SCRIPT=$(readlink -f $0)
 SCRIPTPATH=`dirname $SCRIPT`
-
+# Who am I, really?
+REALUSER=`logname`
 
 #### Sysctl tweaks
-echo "Updating sysctl" && sleep 3
+echo -e "${GREEN}Updating sysctl${NOCOLOR}" && sleep 3
 
 cp $SCRIPTPATH/conf/ubuntu/sysctl.d/*.conf /etc/sysctl.d/
 service procps restart
@@ -25,16 +26,16 @@ service procps restart
 #### Sudoers
 # Via: http://www.chromium.org/chromium-os/tips-and-tricks-for-chromium-os-developers
 # TODO: Check this is actually included?
-echo "Relaxing sudoers" && sleep 3
+echo -e "${GREEN}Relaxing sudoers${NOCOLOR}" && sleep 3
 
 EDITOR=$SCRIPTPATH/conf/ubuntu/sudo_editor visudo -f /etc/sudoers.d/relax_requirements
 
 
 #### Grub text-only boot mode
-echo "Setting grub text-only and trim on dm-crypt" && sleep 3
+echo -e "${GREEN}Setting grub text-only and trim on dm-crypt${NOCOLOR}" && sleep 3
 
 cp /etc/default/grub /etc/default/grub.old
-cp $CRIPTPATH/conf/ubuntu/grub /etc/default/grub
+cp $SCRIPTPATH/conf/ubuntu/grub /etc/default/grub
 update-grub
 
 
@@ -43,15 +44,23 @@ update-grub
 
 
 #### Generate ssh-key if missing
-echo "Generating ssh-key for device" && sleep 3
-ssh-keygen 
+echo -e "${GREEN}Generating ssh-key for device${NOCOLOR}" && sleep 3
+if [ ! -f "/home/${REALUSER}/.ssh/id_rsa" ]; then
+    su ${REALUSER} -c 'ssh-keygen -b 4096 -C "$(whoami)@$(hostname)-$(date -I)"'
+else
+    echo "Key already exists" && sleep 2
+fi
 
 
 #### Hardening tweaks
-echo "Hardening sshd and ssh" && sleep 3
+echo -e "${GREEN}Hardening sshd and ssh${NOCOLOR}" && sleep 3
 
 
 
+#### Ramdisk creation
+
+
+exit
 
 
 #### Ubuntu UX/UI/Privacy tweaks
