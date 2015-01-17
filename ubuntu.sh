@@ -6,6 +6,10 @@ if [[ $UID != 0 ]]; then
     exit 1
 fi
 
+# Where am I?
+SCRIPT=$(readlink -f $0)
+SCRIPTPATH=`dirname $SCRIPT`
+
 apt-get update
 
 # Things I *hate*
@@ -36,18 +40,29 @@ apt-get autoclean
 
 
 #### Syscyl
-
-
+cp $SCRIPTPATH/conf/ubuntu/sysctl.d/*.conf /etc/sysctl.d/
+service procps restart
 
 #### Sudoers
-
+# Via: http://www.chromium.org/chromium-os/tips-and-tricks-for-chromium-os-developers
+cd /tmp
+cat > ./sudo_editor <<EOF
+EOF
+#!/bin/sh
+echo Defaults \!tty_tickets > \$1          # Entering your password in one shell affects all shells
+echo Defaults timestamp_timeout=120 >> \$1 # Time between re-requesting your password, in minutes
+EOF
+chmod +x ./sudo_editor
+sudo EDITOR=./sudo_editor visudo -f /etc/sudoers.d/relax_requirements
+EOF
 
 #### Mount tweaks
 
 
-
 #### Generate ssh-key if missing
 
+
+### Grub text-only boot mode
 
 
 #### Ubuntu UX/UI/Privacy tweaks
