@@ -87,7 +87,7 @@ apt-get update -qq
 apt-get purge unity-webapps-common
 
 # Utilities
-apt-get install -y aptitude screen tmux htop iotop iftop acct
+apt-get install -y aptitude screen tmux htop iotop iftop acct smartmontools
 
 # Things I like
 apt-get install -y git emacs24 mosh xpad spotify-client
