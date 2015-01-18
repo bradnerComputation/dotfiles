@@ -52,15 +52,16 @@ else
 fi
 
 
-#### Hardening tweaks
+#### SSH tweaks
 echo -e "${GREEN}Hardening sshd and ssh${NOCOLOR}" && sleep 3
 
 
-
 #### Ramdisk creation
+echo -e "${GREEN}Ramdisk creation${NOCOLOR}" && sleep 3
 
 
 ### Auto updates
+echo -e "${GREEN}Enabling auto updates?${NOCOLOR}" && sleep 3
 dpkg-reconfigure -plow unattended-upgrades
 
 
