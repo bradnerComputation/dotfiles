@@ -19,6 +19,7 @@ export GOPATH="$HOME/.go/"
 alias emacs="emacs -nw"
 alias python="python3"
 alias pip="pip3"
+alias node="nodejs"
 
 alias linupdate='sudo sh -c "apt-get autoremove; apt-get autoclean; sudo apt-get update; sudo apt-get -V upgrade"'
 

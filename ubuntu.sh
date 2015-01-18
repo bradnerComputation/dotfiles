@@ -89,7 +89,7 @@ apt-get install -y aptitude screen tmux htop iotop iftop acct
 apt-get install -y git emacs24 mosh xpad
 
 # Dev/building stuff
-apt-get install -y build-essential ccache gdb npm 
+apt-get install -y build-essential ccache gdb npm nodejs-legacy 
 
 # Python3
 apt-get install -y python3 pep8 pylint
