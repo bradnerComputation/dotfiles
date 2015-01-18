@@ -86,7 +86,7 @@ apt-get purge unity-webapps-common
 apt-get install -y aptitude screen tmux htop iotop iftop acct
 
 # Things I like
-apt-get install -y git emacs24 mosh
+apt-get install -y git emacs24 mosh xpad
 
 # Dev/building stuff
 apt-get install -y build-essential ccache gdb 
