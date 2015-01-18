@@ -17,12 +17,15 @@ SCRIPTPATH=`dirname $SCRIPT`
 REALUSER=`logname`
 
 #### Sysctl tweaks
-echo -e "${GREEN}Updating sysctl${NOCOLOR}" && sleep 3
+echo -e "${GREEN}Updating sysctl${NOCOLOR}" && sleep 2
 
 cp $SCRIPTPATH/conf/ubuntu/sysctl.d/*.conf /etc/sysctl.d/
 service procps restart
 
-
+#### FIDO U2F Tokens
+echo -e "${GREEN}Udev rules for FIDO${NOCOLOR"} && sleep 2
+cp $SCRIPTPATH/conf/ubuntu/50-fido.rules /etc/udev/rules.d/
+						
 #### Sudoers
 # Via: http://www.chromium.org/chromium-os/tips-and-tricks-for-chromium-os-developers
 # TODO: Check this is actually included?
