@@ -4,6 +4,8 @@
 # Derived from:
 # https://blogs.fsfe.org/the_unconventional/2015/01/14/improving-ubuntu-privacy/
 
+# FYI: there are *tons* of settings visible in dconf-editor
+
 # Automount
 # gsettings set org.gnome.desktop.media-handling automount false
 # gsettings set org.gnome.desktop.media-handling automount-open false
@@ -28,4 +30,10 @@ gsettings set com.canonical.Unity.ApplicationsLens display-available-apps false
 # No recently used
 gsettings set org.gnome.desktop.privacy remember-app-usage false
 gsettings set org.gnome.desktop.privacy remember-recent-files false
+
+# Screensaver
+gsettings set org.gnome.desktop.session idle-delay 300
+gsettings set org.gnome.desktop.screensaver lock-delay 0
+gsettings set org.gnome.desktop.screensaver lock-enabled true
+gsettings set org.gnome.desktop.screensaver idle-activation-enabled true
 
