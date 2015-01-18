@@ -80,7 +80,7 @@ sleep 3
 apt-get update
 
 # Things I *hate*
-# apt-get purge 
+apt-get purge unity-webapps-common
 
 # Utilities
 apt-get install -y aptitude screen tmux htop iotop iftop acct
