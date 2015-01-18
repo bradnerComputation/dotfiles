@@ -11,14 +11,14 @@ git config --global user.email "$GIT_AUTHOR_EMAIL"
 git config --global user.signingkey "DBBB3C45"
 
 
-EDITOR="emacs -nw"
-export EDITOR
+export EDITOR="emacs -nw"
 
-GOPATH="$HOME/.go/"
-export GOPATH
-
+export GOPATH="$HOME/.go/"
 
 # Aliases
 alias emacs="emacs -nw"
 
 alias linupdate='sudo sh -c "apt-get autoremove; apt-get autoclean; sudo apt-get update; sudo apt-get -V upgrade"'
+
+# Enable hardening wrapper for builds
+export DEB_BUILD_HARDENING=1;
