@@ -75,9 +75,13 @@ su ${REALUSER} -c "${SCRIPTPATH}/conf/ubuntu/gsettings-tweaks.sh"
 ####
 
 echo "Starting apt package installs, etc."
-sleep 3
+sleep 2
 
-apt-get update
+
+apt-add-repository -y "deb http://repository.spotify.com stable non-free"
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
+
+apt-get update -qq
 
 # Things I *hate*
 apt-get purge unity-webapps-common
@@ -86,7 +90,7 @@ apt-get purge unity-webapps-common
 apt-get install -y aptitude screen tmux htop iotop iftop acct
 
 # Things I like
-apt-get install -y git emacs24 mosh xpad
+apt-get install -y git emacs24 mosh xpad spotify-client
 
 # Dev/building stuff
 apt-get install -y build-essential ccache gdb npm nodejs-legacy 
