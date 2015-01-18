@@ -60,6 +60,10 @@ echo -e "${GREEN}Hardening sshd and ssh${NOCOLOR}" && sleep 3
 #### Ramdisk creation
 
 
+### Auto updates
+dpkg-reconfigure -plow unattended-upgrades
+
+
 exit
 
 
@@ -107,7 +111,7 @@ apt-get update
 # apt-get purge 
 
 # Utilities
-apt-get install -y aptitude screen tmux htop iotop iftop
+apt-get install -y aptitude screen tmux htop iotop iftop acct
 
 # Things I like
 apt-get install -y git emacs24 mosh
