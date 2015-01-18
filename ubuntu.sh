@@ -98,8 +98,10 @@ apt-get install -y python3 pep8 pylint
 apt-get install -y optipng pngcrush jpegoptim
 
 # Security-focused things
-apt-get install -y hardening-wrapper fail2ban nmap
+apt-get install -y hardening-wrapper fail2ban
 
+# Network focused things
+apt-get install -y nmap ngrep wireshark
 
 # Clean a bit
 apt-get autoremove
