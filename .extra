@@ -15,6 +15,9 @@ export EDITOR="emacs -nw"
 
 export GOPATH="$HOME/.go/"
 
+export PATH="/usr/lib/ccache:$PATH"
+
+
 ### Aliases
 alias emacs="emacs -nw"
 alias python="python3"
