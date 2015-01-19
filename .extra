@@ -29,4 +29,5 @@ export DEB_BUILD_HARDENING=1;
 
 ### Node setup
 # npm root -g = /usr/local/lib/node_modules
-export NODE_PATH="/usr/local/lib/node_modules";
+# export NODE_PATH="/usr/local/lib/node_modules";
+export NODE_PATH="/home/$USER/.npm/lib/node_modules/";
