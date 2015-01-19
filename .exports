@@ -19,6 +19,3 @@ export MANPAGER='less -X';
 
 # Always enable colored `grep` output.
 export GREP_OPTIONS='--color=auto';
-
-# Enable hardening wrapper for builds
-export DEB_BUILD_HARDENING=1;
