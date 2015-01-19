@@ -87,7 +87,7 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
 apt-get update -qq
 
 # Things I *hate*
-apt-get purge unity-webapps-common
+apt-get purge -y unity-webapps-common
 
 # Utilities
 apt-get install -y aptitude screen tmux htop iotop iftop acct smartmontools
