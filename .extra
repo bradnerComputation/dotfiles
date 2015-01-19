@@ -1,7 +1,8 @@
-# Some personal preferred settings
+### Override master annoyances
+unalias c     # Unused & accidentally typed
+unalias sudo  # Breaks builtins like "ls"
 
 ### GIT
-
 GIT_AUTHOR_NAME="Nick Semenkovich"
 GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
 git config --global user.name "$GIT_AUTHOR_NAME"
@@ -11,11 +12,18 @@ git config --global user.email "$GIT_AUTHOR_EMAIL"
 git config --global user.signingkey "DBBB3C45"
 
 
+### General Paths
 export EDITOR="emacs -nw"
 
 export GOPATH="$HOME/.go/"
 
 export PATH="/usr/lib/ccache:$PATH"
+
+
+### Node setup
+# npm root -g = /usr/local/lib/node_modules
+# export NODE_PATH="/usr/local/lib/node_modules";
+export NODE_PATH="/home/$USER/.npm/lib/node_modules/";
 
 
 ### Aliases
@@ -28,9 +36,3 @@ alias linupdate='sudo sh -c "apt-get autoremove; apt-get autoclean; sudo apt-get
 
 ### Enable hardening wrapper for builds
 export DEB_BUILD_HARDENING=1;
-
-
-### Node setup
-# npm root -g = /usr/local/lib/node_modules
-# export NODE_PATH="/usr/local/lib/node_modules";
-export NODE_PATH="/home/$USER/.npm/lib/node_modules/";
