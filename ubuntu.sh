@@ -99,7 +99,7 @@ apt-get install -y git emacs24 mosh xpad spotify-client
 apt-get install -y build-essential ccache gdb npm nodejs-legacy 
 
 # Python3
-apt-get install -y python3 pep8 pylint python3-pip python-pip
+apt-get install -y python3 pep8 pylint python3-pip python-pip ipython ipython3
 
 # Webdeb things
 apt-get install -y optipng pngcrush jpegoptim
