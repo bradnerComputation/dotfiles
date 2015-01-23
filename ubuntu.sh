@@ -105,7 +105,7 @@ apt-get install -y python3 pep8 pylint python3-pip python-pip ipython ipython3
 apt-get install -y optipng pngcrush jpegoptim
 
 # Security-focused things
-apt-get install -y hardening-wrapper fail2ban
+apt-get install -y hardening-wrapper fail2ban netplug
 
 # Network focused things
 apt-get install -y nmap ngrep wireshark
@@ -114,3 +114,8 @@ apt-get install -y nmap ngrep wireshark
 apt-get autoremove
 apt-get autoclean
 
+
+## Configure netplug
+echo -e "${GREEN}Netplug config${NOCOLOR}" && sleep 2
+cp $SCRIPTPATH/conf/ubuntu/netplug/*.conf /etc/netplug/
+service netplug restart
