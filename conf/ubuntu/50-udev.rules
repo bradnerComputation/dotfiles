@@ -37,4 +37,6 @@ SUBSYSTEM=="ehci_hcd", RUN+="/bin/loginctl lock-sessions"
 # SUBSYSTEM=="serio", DRIVERS=="psmouse", RUN+="/bin/loginctl lock-sessions"
 SUBSYSTEM=="serio", RUN+="/bin/loginctl lock-sessions"
 
+SUBSYSTEM=="net", RUN+="/bin/loginctl lock-sessions"
+
 LABEL="lock_end"
