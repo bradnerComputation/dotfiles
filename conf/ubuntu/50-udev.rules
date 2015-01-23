@@ -16,7 +16,7 @@ LABEL="fido_end"
 # New Devices
 ###
 
-ACTION!="add|change", GOTO="lock_end"
+ACTION!="add|change|remove", GOTO="lock_end"
 
 SUBSYSTEM=="usb", ENV{ID_SECURITY_TOKEN}=="1", GOTO="lock_end"
 
