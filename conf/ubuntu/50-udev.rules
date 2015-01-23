@@ -1,0 +1,40 @@
+###
+# FIDO RULES
+###
+
+ACTION!="add|change", GOTO="fido_end"
+
+ATTRS{idVendor}=="1050", ATTRS{idProduct}=="0010|0110|0111|0114|0116|0211|0401|0403|0405|0407|0410", ENV{ID_SECURITY_TOKEN}="1"
+
+LABEL="fido_end"
+
+# For challenge/response on console, you could add... (?)
+#  https://github.com/Yubico/yubikey-personalization/blob/master/70-yubikey.rules
+
+
+###
+# New Devices
+###
+
+ACTION!="add|change", GOTO="lock_end"
+
+SUBSYSTEM=="usb", ENV{ID_SECURITY_TOKEN}=="1", GOTO="lock_end"
+
+SUBSYSTEM=="usb", RUN+="/bin/loginctl lock-sessions"
+
+# I think 03 is USB HID (08 = mass storage, 09 = hub...)
+# SUBSYSTEM=="usb", ATTR{bInterfaceClass}=="03", RUN+="/bin/loginctl lock-sessions"
+# SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", RUN+="/bin/loginctl lock-sessions"
+
+SUBSYSTEM=="input", RUN+="/bin/loginctl lock-sessions"
+
+SUBSYSTEM=="generic-usb", RUN+="/bin/loginctl lock-sessions"
+
+SUBSYSTEM=="hidraw", RUN+="/bin/loginctl lock-sessions"
+
+SUBSYSTEM=="ehci_hcd", RUN+="/bin/loginctl lock-sessions"
+
+# SUBSYSTEM=="serio", DRIVERS=="psmouse", RUN+="/bin/loginctl lock-sessions"
+SUBSYSTEM=="serio", RUN+="/bin/loginctl lock-sessions"
+
+LABEL="lock_end"
