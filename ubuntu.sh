@@ -117,5 +117,5 @@ apt-get autoclean
 
 ## Configure netplug
 echo -e "${GREEN}Netplug config${NOCOLOR}" && sleep 2
-cp $SCRIPTPATH/conf/ubuntu/netplug/*.conf /etc/netplug/
+cp $SCRIPTPATH/conf/ubuntu/netplug/* /etc/netplug/
 service netplug restart
