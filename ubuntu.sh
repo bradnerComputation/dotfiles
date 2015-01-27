@@ -46,12 +46,19 @@ update-grub
 # echo "Setting mount tweaks" && sleep 2
 
 
-#### Generate ssh-key if missing
+#### Generate SSH keys if missing
 echo -e "${GREEN}Generating ssh-key for device${NOCOLOR}" && sleep 2
+
 if [ ! -f "/home/${REALUSER}/.ssh/id_rsa" ]; then
-    su ${REALUSER} -c 'ssh-keygen -b 4096 -C "$(whoami)@$(hostname)-$(date -I)"'
+    su ${REALUSER} -c 'ssh-keygen -t rsa -b 4096 -o -a 100 -C "$(whoami)@$(hostname)-$(date -I)"'
 else
-    echo "Key already exists" && sleep 2
+    echo "RSA Key already exists" && sleep 1
+fi
+
+if [ ! -f "/home/${REALUSER}/.ssh/id_ed25519" ]; then
+    su ${REALUSER} -c 'ssh-keygen -t ed25519 -o -a 100 -C "$(whoami)@$(hostname)-$(date -I)"'
+else
+    echo "ED25519 Key already exists" && sleep 1
 fi
 
 
