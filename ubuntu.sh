@@ -112,7 +112,7 @@ apt-get install -y python3 pep8 pylint python3-pip python-pip ipython ipython3
 apt-get install -y optipng pngcrush jpegoptim
 
 # Security-focused things
-apt-get install -y hardening-wrapper fail2ban netplug
+apt-get install -y hardening-wrapper fail2ban netplug libpam-google-authenticator
 
 # Network focused things
 apt-get install -y nmap ngrep wireshark
