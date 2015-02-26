@@ -37,3 +37,5 @@ gsettings set org.gnome.desktop.screensaver lock-delay 0
 gsettings set org.gnome.desktop.screensaver lock-enabled true
 gsettings set org.gnome.desktop.screensaver idle-activation-enabled true
 
+# Launcher icons
+dconf write /org/compiz/profiles/unity/plugins/unityshell/icon-size 32

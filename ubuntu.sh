@@ -16,26 +16,26 @@ SCRIPTPATH=`dirname $SCRIPT`
 # Who am I, really?
 REALUSER=`logname`
 
-#### Sysctl tweaks
-echo -e "${GREEN}Updating sysctl${NOCOLOR}" && sleep 2
 
+#### Sysctl tweaks
+echo -e "${GREEN}Updating sysctl${NOCOLOR}" && sleep 1
 cp $SCRIPTPATH/conf/ubuntu/sysctl.d/*.conf /etc/sysctl.d/
 service procps restart
 
 #### FIDO U2F Tokens and USB devices
-echo -e "${GREEN}Udev rules for FIDO and USB${NOCOLOR}" && sleep 2
+echo -e "${GREEN}Udev rules for FIDO and USB${NOCOLOR}" && sleep 1
 cp $SCRIPTPATH/conf/ubuntu/50-udev.rules /etc/udev/rules.d/
 						
 #### Sudoers
 # Via: http://www.chromium.org/chromium-os/tips-and-tricks-for-chromium-os-developers
 # TODO: Check this is actually included?
-echo -e "${GREEN}Relaxing sudoers${NOCOLOR}" && sleep 2
+echo -e "${GREEN}Relaxing sudoers${NOCOLOR}" && sleep 1
 
 EDITOR=$SCRIPTPATH/conf/ubuntu/sudo_editor visudo -f /etc/sudoers.d/relax_requirements
 
 
 #### Grub text-only boot mode
-echo -e "${GREEN}Setting grub text-only and trim on dm-crypt${NOCOLOR}" && sleep 2
+echo -e "${GREEN}Setting grub text-only and trim on dm-crypt${NOCOLOR}" && sleep 1
 
 cp /etc/default/grub /etc/default/grub.old
 cp $SCRIPTPATH/conf/ubuntu/grub /etc/default/grub
@@ -43,11 +43,11 @@ update-grub
 
 
 #### Mount tweaks
-# echo "Setting mount tweaks" && sleep 2
+# echo "Setting mount tweaks" && sleep 1
 
 
 #### Generate SSH keys if missing
-echo -e "${GREEN}Generating ssh-key for device${NOCOLOR}" && sleep 2
+echo -e "${GREEN}Generating ssh-key for device${NOCOLOR}" && sleep 1
 
 if [ ! -f "/home/${REALUSER}/.ssh/id_rsa" ]; then
     su ${REALUSER} -c 'ssh-keygen -t rsa -b 4096 -o -a 100 -C "$(whoami)@$(hostname)-$(date -I)"'
@@ -63,20 +63,20 @@ fi
 
 
 #### SSH tweaks
-echo -e "${GREEN}Hardening sshd and ssh${NOCOLOR}" && sleep 2
+echo -e "${GREEN}Hardening sshd and ssh${NOCOLOR}" && sleep 1
 
 
 #### Ramdisk creation
-echo -e "${GREEN}Ramdisk creation${NOCOLOR}" && sleep 2
+echo -e "${GREEN}Ramdisk creation${NOCOLOR}" && sleep 1
 
 
 ### Auto updates
-echo -e "${GREEN}Enabling auto updates?${NOCOLOR}" && sleep 2
+echo -e "${GREEN}Enabling auto updates?${NOCOLOR}" && sleep 1
 dpkg-reconfigure -plow unattended-upgrades
 
 
 #### Ubuntu UX/UI/Privacy tweaks
-echo -e "${GREEN}Tweaking ubuntu UI settings as user...${NOCOLOR}" && sleep 2
+echo -e "${GREEN}Tweaking ubuntu UI settings as user...${NOCOLOR}" && sleep 1
 su ${REALUSER} -c "${SCRIPTPATH}/conf/ubuntu/gsettings-tweaks.sh"
 
 
@@ -85,7 +85,7 @@ su ${REALUSER} -c "${SCRIPTPATH}/conf/ubuntu/gsettings-tweaks.sh"
 ####
 
 echo "Starting apt package installs, etc."
-sleep 2
+sleep 1
 
 
 apt-add-repository -y "deb http://repository.spotify.com stable non-free"
@@ -123,6 +123,6 @@ apt-get autoclean
 
 
 ## Configure netplug
-echo -e "${GREEN}Netplug config${NOCOLOR}" && sleep 2
+echo -e "${GREEN}Netplug config${NOCOLOR}" && sleep 1
 cp $SCRIPTPATH/conf/ubuntu/netplug/* /etc/netplug/
 service netplug restart
