@@ -45,6 +45,9 @@ update-grub
 #### Mount tweaks
 # echo "Setting mount tweaks" && sleep 1
 
+# TODO: Include discard/trim options, noatime, etc.
+
+
 
 #### Generate SSH keys if missing
 echo -e "${GREEN}Generating ssh-key for device${NOCOLOR}" && sleep 1
@@ -65,9 +68,13 @@ fi
 #### SSH tweaks
 echo -e "${GREEN}Hardening sshd and ssh${NOCOLOR}" && sleep 1
 
+# TODO: Copy over ssh config w/ perferred ciphers, restrict root, etc.
+
 
 #### Ramdisk creation
 echo -e "${GREEN}Ramdisk creation${NOCOLOR}" && sleep 1
+
+# TODO For chrome, or just update chrome pointers
 
 
 ### Auto updates
@@ -103,19 +110,13 @@ apt-get install -y aptitude screen tmux htop iotop iftop acct smartmontools
 apt-get install -y git emacs24 mosh xpad spotify-client
 
 # Dev/building stuff
-apt-get install -y build-essential ccache gdb npm nodejs-legacy 
+apt-get install -y build-essential ccache gdb npm nodejs-legacy optipng pngcrush jpegoptim
 
 # Python3
 apt-get install -y python3 pep8 pylint python3-pip python-pip ipython ipython3
 
-# Webdeb things
-apt-get install -y optipng pngcrush jpegoptim
-
 # Security-focused things
-apt-get install -y hardening-wrapper fail2ban netplug libpam-google-authenticator
-
-# Network focused things
-apt-get install -y nmap ngrep wireshark
+apt-get install -y hardening-wrapper fail2ban netplug libpam-google-authenticator nmap ngrep wireshark
 
 # Clean a bit
 apt-get autoremove
@@ -126,3 +127,8 @@ apt-get autoclean
 echo -e "${GREEN}Netplug config${NOCOLOR}" && sleep 1
 cp $SCRIPTPATH/conf/ubuntu/netplug/* /etc/netplug/
 service netplug restart
+
+## Harden lightdm
+echo -e "${GREEN}Lightdm guest restriction${NOCOLOR}" && sleep 1
+cp $SCRIPTPATH/conf/ubuntu/50-lightdm-lockdown.conf /usr/share/lightdm/lightdm.conf.d/
+
