@@ -50,4 +50,5 @@ if hash module &>/dev/null; then
    module load `find $HOME/modulefiles/*/ -maxdepth 1 -type d -printf "%f "`
    # Also R stuff
    export R_LIBS="~/.rlibs":$R_LIBS
+   export LD_LIBRARY_PATH=~/lib:$LD_LIBRARY_PATH
 fi
