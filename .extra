@@ -28,9 +28,12 @@ export NODE_PATH="/home/$USER/.npm/lib/node_modules/";
 
 ### Aliases
 alias emacs="emacs -nw"
-alias python="python3"
-alias pip="pip3"
-alias ipython="ipython3"
+
+# Python 3, when will ye be?
+# alias python="python3"
+# alias pip="pip3"
+# alias ipython="ipython3"
+
 alias node="nodejs"
 alias htop="TERM=screen htop"
 
