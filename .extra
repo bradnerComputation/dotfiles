@@ -54,4 +54,6 @@ if hash module &>/dev/null; then
    # Also R stuff
    export R_LIBS="~/.rlibs":$R_LIBS
    export LD_LIBRARY_PATH=~/lib:$LD_LIBRARY_PATH
+   # And local path stuff
+   export PATH="~/.local/bin":$PATH
 fi
