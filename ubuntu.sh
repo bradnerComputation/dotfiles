@@ -104,19 +104,12 @@ apt-get update -qq
 apt-get purge -y unity-webapps-common
 
 # Utilities
-apt-get install -y aptitude screen tmux htop iotop iftop acct smartmontools
-
-# Things I like
-apt-get install -y git emacs24 mosh xpad spotify-client
-
-# Dev/building stuff
-apt-get install -y build-essential ccache gdb npm nodejs-legacy optipng pngcrush jpegoptim
-
-# Python3
-apt-get install -y python3 pep8 pylint python3-pip python-pip ipython ipython3
-
-# Security-focused things
-apt-get install -y hardening-wrapper fail2ban netplug libpam-google-authenticator nmap ngrep wireshark
+apt-get install -y \
+	aptitude screen tmux htop iotop iftop acct smartmontools \
+	git emacs24 mosh xpad spotify-client \
+	build-essential ccache gdb npm nodejs-legacy optipng pngcrush jpegoptim \
+	python3 pep8 pylint python3-pip python-pip ipython ipython3 \
+	hardening-wrapper fail2ban netplug libpam-google-authenticator nmap ngrep wireshark
 
 # Clean a bit
 apt-get autoremove
