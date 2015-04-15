@@ -83,8 +83,8 @@ dpkg-reconfigure -plow unattended-upgrades
 
 
 #### Ubuntu UX/UI/Privacy tweaks
-echo -e "${GREEN}Tweaking ubuntu UI settings as user...${NOCOLOR}" && sleep 1
-su ${REALUSER} -c "${SCRIPTPATH}/conf/ubuntu/gsettings-tweaks.sh"
+# echo -e "${GREEN}Tweaking ubuntu UI settings as user...${NOCOLOR}" && sleep 1
+# su ${REALUSER} -c "${SCRIPTPATH}/conf/ubuntu/gsettings-tweaks.sh"
 
 
 ####
@@ -101,7 +101,7 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
 apt-get update -qq
 
 # Things I *hate*
-apt-get purge -y unity-webapps-common
+apt-get purge -y unity-webapps-common apport
 
 # Utilities
 apt-get install -y \
