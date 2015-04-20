@@ -48,7 +48,7 @@ alias qsub='qsub -m a -M nick+qsub@semenkovich.com'
 
 if hash module &>/dev/null; then
    module use $HOME/modulefiles
-   module load tmux ccache R bedtools samtools meme bowtie numpy scipy kentsrc biopython
+   module load tmux ccache R bedtools samtools meme bowtie2 numpy scipy kentsrc biopython
    # Auto-load my own modules
    module load `find $HOME/modulefiles/*/ -maxdepth 1 -type d -printf "%f "`
    # Also R stuff
