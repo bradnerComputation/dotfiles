@@ -105,7 +105,7 @@ apt-get purge -y unity-webapps-common apport
 
 # Utilities
 apt-get install -y \
-	aptitude screen tmux htop iotop iftop acct smartmontools \
+	aptitude screen tmux htop iotop iftop acct smartmontools molly-guard \
 	git emacs24 mosh xpad spotify-client \
 	build-essential ccache gdb npm nodejs-legacy optipng pngcrush jpegoptim \
 	python3 pep8 pylint python3-pip python-pip ipython ipython3 \
