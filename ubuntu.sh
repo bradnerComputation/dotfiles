@@ -109,7 +109,7 @@ apt-get install -y \
 	git emacs24 mosh xpad spotify-client \
 	build-essential ccache gdb npm nodejs-legacy optipng pngcrush jpegoptim \
 	python3 pep8 pylint python3-pip python-pip ipython ipython3 \
-	hardening-wrapper fail2ban netplug libpam-google-authenticator nmap ngrep wireshark
+	hardening-wrapper sshguard netplug libpam-google-authenticator nmap ngrep wireshark
 
 # Clean a bit
 apt-get autoremove
