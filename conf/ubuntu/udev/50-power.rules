@@ -1,0 +1,8 @@
+# Suggested UDEV power saving rules
+# Currently untested.
+
+# Wifi can sleep
+ACTION=="add", SUBSYSTEM=="net", KERNEL=="wlan*" RUN+="/usr/sbin/iw dev %k set power_save on"
+
+# SATA links can sleep
+SUBSYSTEM=="scsi_host", KERNEL=="host*", ATTR{link_power_management_policy}="min_power"
