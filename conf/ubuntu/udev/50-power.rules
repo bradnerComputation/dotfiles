@@ -1,8 +1,15 @@
 # Suggested UDEV power saving rules
 # Currently untested.
 
+# PCI can powersave
+ACTION=="add", SUBSYSTEM=="pci", ATTR{power/control}="auto"
+
+# SATA links can powersave
+SUBSYSTEM=="scsi_host", KERNEL=="host*", ATTR{link_power_management_policy}="min_power"
+
+# USB can suspend
+ACTION=="add", SUBSYSTEM=="usb", TEST=="power/control" ATTR{power/control}="auto"
+ACTION=="add", SUBSYSTEM=="usb", TEST=="power/autosuspend" ATTR{power/autosuspend}="2"
+
 # Wifi can sleep
 ACTION=="add", SUBSYSTEM=="net", KERNEL=="wlan*" RUN+="/usr/sbin/iw dev %k set power_save on"
-
-# SATA links can sleep
-SUBSYSTEM=="scsi_host", KERNEL=="host*", ATTR{link_power_management_policy}="min_power"
