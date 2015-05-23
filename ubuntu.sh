@@ -98,6 +98,10 @@ sleep 1
 apt-add-repository -y "deb http://repository.spotify.com stable non-free"
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
 
+# Get Chrome
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
+
 apt-get update -qq
 
 # Things I *hate*
@@ -106,19 +110,15 @@ apt-get purge -y unity-webapps-common apport
 # Utilities
 apt-get install -y \
 	aptitude screen tmux htop iotop iftop acct smartmontools molly-guard \
-	git emacs24 mosh xpad spotify-client \
+	git emacs24 mosh xpad spotify-client indicator-multiload \
 	build-essential ccache gdb npm nodejs-legacy optipng pngcrush jpegoptim \
 	python3 pep8 pylint python3-pip python-pip ipython ipython3 \
-	hardening-wrapper sshguard netplug libpam-google-authenticator nmap ngrep wireshark
+	hardening-wrapper sshguard netplug libpam-google-authenticator nmap ngrep wireshark \
+	google-chrome-stable google-chrome-beta google-chrome-unstable
 
 # Clean a bit
 apt-get autoremove
 apt-get autoclean
-
-# Get Chrome
-wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
-apt-get install google-chrome-stable google-chrome-beta google-chrome-unstable
 
 
 ## Configure netplug
