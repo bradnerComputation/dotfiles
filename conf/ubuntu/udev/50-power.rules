@@ -9,7 +9,7 @@ SUBSYSTEM=="scsi_host", KERNEL=="host*", ATTR{link_power_management_policy}="min
 
 # USB can suspend
 ACTION=="add", SUBSYSTEM=="usb", TEST=="power/control" ATTR{power/control}="auto"
-ACTION=="add", SUBSYSTEM=="usb", TEST=="power/autosuspend" ATTR{power/autosuspend}="2"
+ACTION=="add", SUBSYSTEM=="usb", TEST=="power/autosuspend" ATTR{power/autosuspend}="300"
 
 # Wifi can sleep
 ACTION=="add", SUBSYSTEM=="net", KERNEL=="wlan*" RUN+="/usr/sbin/iw dev %k set power_save on"
