@@ -46,10 +46,10 @@ export DEB_BUILD_HARDENING=1;
 ### CGS Cluster-specific
 
 if hash module &>/dev/null; then
-   module use $HOME/modulefiles
+   module use $HOME/modulefiles 2>/dev/null
    module load tmux ccache R bedtools samtools meme bowtie2 numpy scipy kentsrc biopython matplotlib checkpoint
    # Auto-load my own modules
-   module load `find $HOME/modulefiles/*/ -maxdepth 1 -type d -printf "%f "`
+   module load `find $HOME/modulefiles/*/ -maxdepth 1 -type d -printf "%f "` 2>/dev/null
    # Also R stuff
    export R_LIBS="~/.rlibs":$R_LIBS
    export LD_LIBRARY_PATH=~/lib:$LD_LIBRARY_PATH
