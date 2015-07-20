@@ -110,6 +110,7 @@ apt-get purge -y unity-webapps-common apport
 # Utilities
 apt-get install -y \
 	aptitude screen tmux htop iotop iftop acct smartmontools molly-guard curl openssh-blacklist openssh-blacklist-extra \
+	apparmor apparmor-utils apparmor-profiles apparmor-profiles-extra \
 	git emacs24 mosh xpad spotify-client indicator-multiload \
 	build-essential ccache gdb npm nodejs-legacy optipng pngcrush jpegoptim \
 	python3 pep8 pylint python3-pip python-pip ipython ipython3 \
