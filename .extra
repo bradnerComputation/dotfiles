@@ -47,7 +47,7 @@ export DEB_BUILD_HARDENING=1;
 
 if hash module &>/dev/null; then
    module use $HOME/modulefiles 2>/dev/null
-   module load tmux ccache R bedtools samtools meme bowtie2 numpy scipy kentsrc biopython matplotlib macs
+   module load tmux ccache R bedtools samtools bowtie2 numpy scipy kentsrc biopython matplotlib macs
    # Auto-load my own modules
    module load `find $HOME/modulefiles/*/ -maxdepth 1 -type d -printf "%f "` 2>/dev/null
    # Also R stuff
@@ -55,4 +55,7 @@ if hash module &>/dev/null; then
    export LD_LIBRARY_PATH=~/lib:$LD_LIBRARY_PATH
    # And local path stuff
    export PATH="~/.local/bin":$PATH
+   
+   # And some special cluster commands
+   alias jobinfo="watch -d -n2 'squeue | grep semenko | wc -l ; squeue | grep semenko | tac'"
 fi
