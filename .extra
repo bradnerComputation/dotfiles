@@ -57,5 +57,5 @@ if hash module &>/dev/null; then
    export PATH="~/.local/bin":$PATH
    
    # And some special cluster commands
-   alias jobinfo="watch -d -n2 'squeue | grep semenko | wc -l ; squeue | grep semenko | tac'"
+   alias jobinfo="watch -d -n2 'echo -n \"Total: \"; squeue -h -u $USER | head -n-1 | wc -l ; echo -n \"Running: \"; squeue -h -u $USER | grep \" R \" | head -n-1 | wc -l ; squeue -h -u $USER | tac'"
 fi
